@@ -8,16 +8,19 @@
     <button @click="goLink('/')">go home</button>
     <br>
     <HelloWorld msg="This is an helloWord" />
+    <el-button type="warning">1313131</el-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import HelloWorld from '@/components/HelloWorld.vue'
+import { ElButton } from 'element-plus'
 
 @Options({
   components: {
-    HelloWorld
+    HelloWorld,
+    ElButton
   }
 })
 export default class userView extends Vue {
