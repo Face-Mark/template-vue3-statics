@@ -9,6 +9,8 @@
     <br>
     <HelloWorld msg="This is an helloWord" />
     <el-button type="warning">1313131</el-button>
+    <br>
+    <el-button type="primary" @click="handleClipboard('我是一个汉字', $event)">复制</el-button>
   </div>
 </template>
 
@@ -16,6 +18,7 @@
 import { Options, Vue } from 'vue-class-component'
 import HelloWorld from '@/components/HelloWorld.vue'
 import { ElButton } from 'element-plus'
+import { handleClipboard } from '@/utils/clipboard'
 
 @Options({
   components: {
@@ -25,6 +28,7 @@ import { ElButton } from 'element-plus'
 })
 export default class userView extends Vue {
   count = 0
+  private handleClipboard = handleClipboard
   countHandle (type: string) {
     switch (type) {
       case 'add':
