@@ -90,3 +90,54 @@ export const toggleClass = (ele: HTMLElement, className: string) => {
   }
   ele.className = classString
 }
+
+/**
+ * @param {string} url
+ * @returns {Object}
+ */
+export const getQueryObject = (url: string): object => {
+  url = url == null ? window.location.href : url
+  const search = url.substring(url.lastIndexOf('?') + 1)
+  const obj: {
+    [key: string]: number | string
+  } = {}
+  const reg = /([^?&=]+)=([^?&=]*)/g
+  search.replace(reg, (rs, $1, $2) => {
+    const name = decodeURIComponent($1)
+    let val = decodeURIComponent($2)
+    val = String(val)
+    obj[name] = val
+    return rs
+  })
+  return obj
+}
+
+/**
+ * @param {string} str value
+ * @returns {number} output value
+ */
+export const byteLength = (str: string): number => {
+  // returns the byte length of an utf8 string
+  let s = str.length
+  for (let i = str.length - 1; i >= 0; i--) {
+    const code = str.charCodeAt(i)
+    if (code > 0x7f && code <= 0x7ff) s++
+    else if (code > 0x7ff && code <= 0xffff) s += 2
+    if (code >= 0xDC00 && code <= 0xDFFF) i--
+  }
+  return s
+}
+
+/**
+ * @param {Array} actual
+ * @returns {Array}
+ */
+export const cleanArray = (actual: any[]): Array<any> => {
+  const newArray: any[] = []
+  for (let i = 0; i < actual.length; i++) {
+    if (actual[i]) {
+      newArray.push(actual[i])
+    }
+  }
+  return newArray
+}

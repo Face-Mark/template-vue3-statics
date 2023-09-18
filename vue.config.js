@@ -14,5 +14,9 @@ module.exports = defineConfig({
         resolvers: [ElementPlusResolver()]
       })
     ]
+  },
+  devServer: {
+    port: 7002,
+    open: true
   }
 })

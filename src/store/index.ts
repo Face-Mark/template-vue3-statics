@@ -1,14 +1,17 @@
 import { createStore } from 'vuex'
+import { config } from 'vuex-module-decorators'
 
-export default createStore({
+import UserModule from '@/store/modules/user'
+
+config.rawError = true
+
+const store = createStore({
   state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
+
   },
   modules: {
+    UserModule
   }
 })
+
+export default store
